@@ -2,28 +2,21 @@ pipeline {
     agent any
 
     stages {
-        stage('Checkout Code') {
+        stage('Checkout') {
             steps {
-                echo 'Code already checked out by Jenkins (SCM)'
+                checkout scm
             }
         }
 
-        stage('Build') {
+        stage('Python Version') {
             steps {
-                echo 'Building the application...'
+                sh 'python3 --version'
             }
         }
 
-        stage('Test') {
+        stage('Install Dependencies') {
             steps {
-                echo 'Running tests...'
-            }
-        }
-
-        stage('Deploy') {
-            steps {
-                echo 'Deploying application...   testing'
-            }
+                sh 'pip3 install -r requirements.txt'
         }
     }
 }
