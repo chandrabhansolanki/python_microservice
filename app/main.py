@@ -14,7 +14,7 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"]
 )
-print('hello worldsssss')
+print('hello world')
 app.include_router(auth_router)
 
 
