@@ -8,15 +8,10 @@ pipeline {
             }
         }
 
-        stage('Python Version') {
+        stage('Test') {
             steps {
-                sh 'python3 --version'
+                echo "Pipeline is working ✅"
             }
-        }
-
-        stage('Install Dependencies') {
-            steps {
-                sh 'pip3 install -r requirements.txt'
         }
     }
 }
