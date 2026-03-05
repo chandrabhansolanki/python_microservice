@@ -1,5 +1,5 @@
 import grpc
-from proto import auth_pb2, auth_pb2_grpc
+from auth_proto import auth_pb2, auth_pb2_grpc
 
 def grpc_login(email, password):
     print("➡️ HTTP → gRPC CALL")

@@ -6,10 +6,16 @@ import uuid
 from fastapi import Request, HTTPException
 from app.core.redis import redis_client
 
-pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
-
+pwd_context = CryptContext(
+    schemes=["argon2"],
+    deprecated="auto"
+)
 def hash_password(password: str) -> str:
-
+    # if len(password.encode("utf-8")) > 72:
+    #     raise HTTPException(
+    #         status_code=400,
+    #         detail="Password too long. Maximum 72 bytes allowed."
+    #     )
 
     return pwd_context.hash(password)
 

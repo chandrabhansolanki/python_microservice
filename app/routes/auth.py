@@ -13,6 +13,8 @@ from typing import List
 from PIL import Image
 import pytesseract
 import io
+from app.schemas.resumeschema import ResumeResponse
+from app.clients.resume_grpc_client import client_upload_resume
 
 router = APIRouter(prefix="/auth",tags=["auth"])
 
@@ -99,5 +101,17 @@ async def characterRecognition(file: UploadFile = File(...)):
         }
     except Exception as e:
         raise HTTPException(status_code=400, detail="Image is not readable")
+
+@router.post("/upload-resume", response_model=ResumeResponse)
+async def upload_resume(file: UploadFile = File(...)):
+    file_bytes = await file.read()
+
+    response = client_upload_resume(file_bytes)
+    return {
+        "name": response.name,
+        "email": response.email,
+        "phone": response.phone
+    }
+
 
 

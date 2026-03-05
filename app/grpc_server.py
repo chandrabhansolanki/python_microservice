@@ -1,6 +1,6 @@
 from concurrent import futures
 import grpc
-from proto import auth_pb2_grpc
+from auth_proto import auth_pb2_grpc
 from app.services.auth_service import AuthService
 
 def serve():

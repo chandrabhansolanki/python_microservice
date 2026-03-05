@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package resume;
+
+service ResumeService {
+  rpc ParseResume (ResumeRequest) returns (ResumeResponse);
+}
+
+message ResumeRequest {
+  bytes file = 1;
+}
+
+message ResumeResponse {
+  string name = 1;
+  string email = 2;
+  string phone = 3;
+}

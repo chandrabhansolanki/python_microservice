@@ -3,7 +3,7 @@ from app.database import  SessionLocal
 from app.auth import create_token, decode_token, verify_password
 import grpc
 
-from proto import auth_pb2_grpc, auth_pb2
+from auth_proto import auth_pb2_grpc, auth_pb2
 
 
 class AuthService(auth_pb2_grpc.AuthServiceServicer):
