@@ -1,0 +1,31 @@
+How we can start jenkins in docker
+
+docker ps
+docker restart jenkins
+docker stop jenkins
+docker start jenkins
+
+how to check logs
+
+docker logs jenkins
+docker logs -f jenkins
+
+how to expose jenkins 8080?
+docker inspect jenkins | grep -i port
+
+
+how to check jenkins container ke andar network test
+
+docker exec -it jenkins bash
+ping github.com  OR git ls-remote https://github.com/chandrabhansolanki/python_microservice.git // REPO OF YOUR REPOSITORY PATH
+
+
+How to start jenkins with DNS
+docker run -d \
+  --name jenkins \
+  -p 8080:8080 \
+  -p 50000:50000 \
+  --dns 8.8.8.8 \
+  --dns 8.8.4.4 \
+  -v jenkins_home:/var/jenkins_home \
+  jenkins/jenkins:lts
